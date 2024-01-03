@@ -1,0 +1,10 @@
+<launch>
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find omni_robot_config)/urdf/omni_robot.urdf -urdf -model omniwheel"
+    output="screen" />
+</launch>

@@ -1,0 +1,149 @@
+<?xml version="1.0" ?>
+<robot name="omni_robot">
+   <material name="yellow">
+     <color rgba="1 1 0 1"/> 
+   </material>
+   <material name="black">
+     <color rgba="0 0 0 1"/>
+   </material>
+
+  <!-- Define joint types -->
+  <joint name="joint_wheel1" type="continuous">
+    <origin xyz="0.1 0.1 0" rpy="1.5708 0 -0.7854"/>
+    <parent link="base_link"/>
+    <child link="wheel_link1"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="joint_wheel2" type="continuous">
+    <origin xyz="0.1 -0.1 0" rpy="1.5708 0 0.7854"/>
+    <parent link="base_link"/>
+    <child link="wheel_link2"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="joint_wheel3" type="continuous">
+    <origin xyz="-0.1 -0.1 0" rpy="1.5708 0 -0.7854"/>
+    <parent link="base_link"/>
+    <child link="wheel_link3"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="joint_wheel4" type="continuous">
+    <origin xyz="-0.1 0.1 0" rpy="1.5708 0 0.7854"/>
+    <parent link="base_link"/>
+    <child link="wheel_link4"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Define links -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.03"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+     <collision>
+      <geometry>
+        <box size="0.2 0.2 0.03"/>
+      </geometry>
+    </collision>
+            <inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+  </link>
+  
+  <link name="wheel_link1">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+      <material name="black"/>
+      
+    </visual>
+     <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+      
+    </collision>   
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+  </link>
+
+  <link name="wheel_link2">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+      <material name="black"/>
+
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+
+    </collision> 
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>   
+  </link>
+
+  <link name="wheel_link3">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+      <material name="black"/>
+
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+
+    </collision>
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+  </link>
+
+  <link name="wheel_link4">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+      <material name="black"/>
+
+    </visual>
+    
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+
+    </collision>
+        <inertial>
+            <mass value="0.1" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+  </link>
+  <gazebo>
+    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>50.0</odometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishTF>true</publishTF>
+    </plugin>
+  </gazebo>
+
+</robot>
